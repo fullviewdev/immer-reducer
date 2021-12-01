@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  types-and-lints:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.13.0'
+          cache: yarn
+          cache-dependency-path: yarn.lock
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Type & Lint Check
+        run: yarn dtslint
