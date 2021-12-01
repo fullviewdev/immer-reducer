@@ -302,7 +302,8 @@ function getAllPropertyNames(obj: object) {
 export function createActionCreators<T extends ImmerReducerClass>(
     immerReducerClass: T,
 ): ActionCreators<T> {
-    setCustomNameForDuplicates(immerReducerClass);
+    const immerReducerClassMock = immerReducerClass as unknown as typeof ImmerReducer;
+    setCustomNameForDuplicates(immerReducerClassMock);
 
     const actionCreators: {[key: string]: Function} = {};
     const immerReducerProperties = getAllPropertyNames(ImmerReducer.prototype);
@@ -346,7 +347,8 @@ export function createReducerFunction<T extends ImmerReducerClass>(
     immerReducerClass: T,
     initialState?: ImmerReducerState<T>,
 ): ImmerReducerFunction<T> {
-    setCustomNameForDuplicates(immerReducerClass);
+    const immerReducerClassMock = immerReducerClass as unknown as typeof ImmerReducer;
+    setCustomNameForDuplicates(immerReducerClassMock);
 
     return function immerReducerFunction(state, action) {
         if (state === undefined) {
