@@ -34,6 +34,10 @@ type ReturnTypeUnion<T extends MethodObject> = ObjectValueTypes<
     FlattenToReturnTypes<T>
 >;
 
+type Action = any;
+
+type DispatchFunction = (action: Action) => ImmerAction;
+
 /**
  * Get union of actions types from a ImmerReducer class
  */
@@ -170,12 +174,28 @@ export function composeReducers<State>(
 /** The actual ImmerReducer class */
 export class ImmerReducer<T> {
     static customName?: string;
+    static queue: Action[] = [];
     readonly state: T;
     draftState: Draft<T>; // Make read only states mutable using Draft
 
     constructor(draftState: Draft<T>, state: T) {
         this.state = state;
         this.draftState = draftState;
+    }
+
+    static dispatch: DispatchFunction = (action: Action) => {
+        ImmerReducer.queue.push(action);
+
+        return action;
+    };
+
+    static bind(dispatch: DispatchFunction) {
+      const { queue } = ImmerReducer;
+
+      ImmerReducer.dispatch = dispatch;
+      ImmerReducer.queue = [];
+
+      queue.forEach(dispatch);
     }
 }
 
@@ -303,7 +323,7 @@ export function createActionCreators<T extends ImmerReducerClass>(
         const actionCreator = (...args: any[]) => {
             // Make sure only the arguments are passed to the action object that
             // are defined in the method
-            return createImmerAction(type, args.slice(0, method.length));
+            return ImmerReducer.dispatch(createImmerAction(type, args.slice(0, method.length)));
         };
         actionCreator.type = type;
         actionCreators[key] = actionCreator;
