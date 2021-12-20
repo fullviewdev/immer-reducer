@@ -5,7 +5,7 @@
     "main": "lib/immer-reducer.js",
     "types": "lib/immer-reducer.d.ts",
     "repository": {
-        "url": "https://github.com/fullviewdev/immer-reducer"
+        "url": "https://github.com/fullviewdev/pkg-immer-reducer"
     },
     "scripts": {
         "test": "npm run dtslint && jest",
