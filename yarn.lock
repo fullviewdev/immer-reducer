@@ -1539,7 +1539,7 @@ dts-critic@latest:
     tmp "^0.2.1"
     yargs "^15.3.1"
 
-dtslint@^4.0.7:
+dtslint@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/dtslint/-/dtslint-4.2.1.tgz#c416db9bb7ce3face599b7097b9cd0e7f478fdf7"
   integrity sha512-57mWY9osUEfS6k62ATS9RSgug1dZcuN4O31hO76u+iEexa6VUEbKoPGaA2mNtc0FQDcdTl0zEUtti79UQKSQyQ==
@@ -2093,7 +2093,7 @@ ieee754@^1.1.13:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
-"immer@^1.4.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^8.0.0 || ^9.0.0":
+immer@>=9.0.6:
   version "9.0.7"
   resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.7.tgz#b6156bd7db55db7abc73fd2fdadf4e579a701075"
   integrity sha512-KGllzpbamZDvOIxnmJ0jI840g7Oikx58lBPWV0hUh7dtAyZpFqqrBZdKka5GlTwMTZ1Tjc/bKKW4VSFAt6BqMA==
