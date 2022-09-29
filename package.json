@@ -1,6 +1,6 @@
 {
     "name": "@fullview/immer-reducer",
-    "version": "0.7.16",
+    "version": "0.7.17",
     "description": "Type-safe and terse reducers with Typescript for React Hooks and Redux using Immer!",
     "main": "lib/immer-reducer.js",
     "types": "lib/immer-reducer.d.ts",
@@ -43,7 +43,7 @@
         "immer": ">=9.0.6"
     },
     "publishConfig": {
-        "access": "public"
+        "access": "restricted"
     },
     "resolutions": {
         "ansi-regex": "^5.0.1",
